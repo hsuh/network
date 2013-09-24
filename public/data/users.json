@@ -1,0 +1,48 @@
+{
+  "clusters":
+    [
+      {"name": "cluster123", "group":"1", "user_count": 1},
+      {"name": "cluster124", "group":"2", "user_count": 4},
+      {"name": "cluster125", "group":"3", "user_count": 1},
+      {"name": "cluster126", "group":"4", "user_count": 7},
+      {"name": "cluster127", "group":"5", "user_count": 8},
+      {"name": "cluster128", "group":"6", "user_count": 2}
+    ],
+  "nodes":
+    [
+      {"name":"A. Ross","group":5, "user_id": 1},
+      {"name":"G. Farquharson","group":1, "user_id": 4},
+      {"name":"C. Sinclair","group":2, "user_id": 2},
+      {"name":"H. Anderson","group":2, "user_id": 5},
+      {"name":"I. MacKenzie","group":2, "user_id": 7},
+      {"name":"K. Cameron","group":2, "user_id": 12},
+      {"name":"H. Macdonald","group":3, "user_id": 6},
+      {"name":"M. Buchanan","group":5, "user_id": 14},
+      {"name":"J. Stewart","group":5, "user_id": 8},
+      {"name":"M. Macleod","group":6, "user_id": 9},
+      {"name":"G. Murray","group":6, "user_id": 11},
+      {"name":"L. Robertson","group":6, "user_id": 13},
+      {"name":"R. MacPherson","group":4, "user_id": 10},
+      {"name":"E. Munro","group":4, "user_id": 3},
+      {"name":"M. Fraser","group":4, "user_id": 15}
+    ],
+  "links":
+    [
+      {"source":4,"target":1,"value":6},
+      {"source":8,"target":7,"value":1},
+      {"source":6,"target":4,"value":1},
+      {"source":6,"target":1,"value":6},
+      {"source":7,"target":1,"value":1},
+      {"source":9,"target":2,"value":1},
+      {"source":10,"target":8,"value":6},
+      {"source":11,"target":4,"value":1},
+      {"source":11,"target":6,"value":1},
+      {"source":11,"target":1,"value":1},
+      {"source":12,"target":10,"value":1},
+      {"source":12,"target":8,"value":6},
+      {"source":13,"target":7,"value":1},
+      {"source":13,"target":1,"value":1},
+      {"source":14,"target":9,"value":1},
+      {"source":14,"target":2,"value":1}
+    ]
+}
