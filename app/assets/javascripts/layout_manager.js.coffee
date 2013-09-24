@@ -1,8 +1,8 @@
-define ['view_manager'], layoutManager = (vm) ->
+define ['views/all_nodes'], layoutManager = (vm) ->
   layout  = {}
   charge  = 0; linkDist=0; gravity=0
   forceWidth=960; forceHeight=400
-  viewManager = vm.viewManager
+  viewManager = vm.allNodes
 
   tick = () ->
     link = viewManager.getLink()

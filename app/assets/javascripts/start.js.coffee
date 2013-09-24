@@ -1,8 +1,9 @@
-define ['process_data', 'view_manager', 'layout_manager', 'behaviour_manager'], start = (pd, vm, lm,bm) ->
+define ['process_data', 'view_manager', 'layout_manager', 'behaviour_manager', 'layouts/fd_for_clusters', 'views/all_nodes'], start = (pd, vm, lm,bm, fdc, all_nodes) ->
   return start: () ->
-    dataManager   = pd.dataManager
-    viewManager   = vm.viewManager
+    dataManager      = pd.dataManager
+    viewManager      = vm.viewManager
     behaviourManager = bm.behaviourManager
+    allNodes         = all_nodes.allNodes
     console.log(behaviourManager)
 
     viewManager.appendElems()
@@ -14,7 +15,7 @@ define ['process_data', 'view_manager', 'layout_manager', 'behaviour_manager'], 
       viewManager.attachDataToElems(data)
       layoutManager = lm.layoutManager
       layoutManager.initiate(data)
-      behaviourManager.listenForEvents(viewManager)
+      behaviourManager.listenForEvents(allNodes)
     )
 
 

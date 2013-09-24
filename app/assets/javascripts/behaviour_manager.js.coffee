@@ -1,4 +1,4 @@
-define behaviour_manager = () ->
+define behaviourManager = () ->
   exports     = {}
 
   nodeChangeSize = (d, opt) ->
@@ -18,4 +18,3 @@ define behaviour_manager = () ->
     )
 
   return behaviourManager: exports
-
