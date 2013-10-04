@@ -9,10 +9,19 @@ define allNodes = () ->
   allNodes.getNode = () ->
     return node
 
+  getNodeID = (d) ->
+    return (d.name)
+
+  getLinkId = (l) ->
+    u = getNodeID(l.source)
+    v = getNodeID(l.target)
+    return (if (u<v) then (u + "|" + v) else (v + "|" + u))
+
   allNodes.attachData = (nodes_group, links_group, data) ->
-    node = nodes_group.selectAll('circle').data(data.nodes)
+    node = nodes_group.selectAll('circle').data(data.nodes, getNodeID)
+    node.exit().remove()
     node.enter().append('circle')
-      .attr('class', 'node')
+      .attr('class', 'node leaf')
       .attr('r', 5)
       .attr('cx', (d) -> return d.x)
       .attr('cy', (d) -> return d.y)
@@ -20,7 +29,8 @@ define allNodes = () ->
       .on("mouseover", dispatch.nodeHover)
       .on("mouseout", dispatch.nodeMouseOut)
 
-    link = links_group.selectAll('line').data(data.links)
+    link = links_group.selectAll('line').data(data.links, getLinkId)
+    link.exit().remove()
     link.enter().append('line')
       .attr('class', 'link')
       .attr("x1", (d) -> return d.source.x)

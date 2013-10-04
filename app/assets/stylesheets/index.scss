@@ -1,5 +1,15 @@
 @import 'bootstrap';
 .link {
-  stroke: #333;
+  stroke: #0A0A0A;
   stroke-opacity: 0.5;
+}
+
+circle.leaf {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+circle.group {
+  stroke: #555;
+  stroke-width: 2px;
 }

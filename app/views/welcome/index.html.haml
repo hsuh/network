@@ -2,8 +2,12 @@
   %div.navbar
     %div.navbar-inner
       = link_to "Network", '#', class: 'brand'
-      %ul.nav
-        %li{class: 'active switch', id: 'cluster'}= link_to 'Cluster', '#'
+      %ul.nav.navbar-nav
+        %li{class: 'active switch', id: 'all_nodes'}= link_to 'All', '#'
+        %li{class: 'switch', id: 'webcast_nodes'}= link_to 'Group by Webcast', '#'
+        %li{class: 'switch', id: 'webcast_inside'}= link_to 'Blue Cluster', '#'
+        /%li.dropdown
+        /= link_to "Dropdown", '#', class: 'dropdown-toggle', style: {:'data-toggle' =>'dropdown'}
 %div.container
   %div#viz
 %div#legend

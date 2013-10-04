@@ -4,6 +4,7 @@ define ['process_data', 'view_manager', 'layout_manager', 'behaviour_manager', '
     viewManager      = vm.viewManager
     behaviourManager = bm.behaviourManager
     allNodes         = all_nodes.allNodes
+    data = null; clusterData = null; blueData = null
     console.log(behaviourManager)
 
     viewManager.appendElems()
@@ -11,11 +12,45 @@ define ['process_data', 'view_manager', 'layout_manager', 'behaviour_manager', '
 
     dataManager.on('dataReady', () ->
       dataManager.debugData()
-      data = dataManager.getData()
-      viewManager.attachDataToElems(data)
+      data        = dataManager.getData()
+      clusterData = dataManager.getClusters()
+      blueData    = dataManager.getBlueData()
+      console.log('clusterData', clusterData)
+      console.log('blueData', blueData)
+      viewManager.attachDataToElems(data, 'all')
       layoutManager = lm.layoutManager
-      layoutManager.initiate(data)
+      layoutManager.initiate(data, 'all')
       behaviourManager.listenForEvents(allNodes)
+
+      $('.brand').on('click', (e) ->
+        e.preventDefault()
+      )
+
+      $('#all_nodes').on('click', (e) ->
+        e.preventDefault()
+        data = dataManager.getData()
+        viewManager.attachDataToElems(data, 'all')
+        layoutManager.initiate(data, 'all')
+        $('#webcast_nodes').removeClass("active")
+        $('#webcast_inside').removeClass("active")
+        $('#all_nodes').addClass("active")
+      )
+
+      $('#webcast_nodes').on('click', (e) ->
+        e.preventDefault()
+        viewManager.attachDataToElems(clusterData, 'webcasts')
+        layoutManager.initiate(clusterData, 'cluster')
+        $('#all_nodes').removeClass("active")
+        $('#webcast_inside').removeClass("active")
+        $('#webcast_nodes').addClass("active")
+      )
+
+      $('#webcast_inside').on('click', (e) ->
+        e.preventDefault()
+        viewManager.attachDataToElems(blueData, 'all')
+        layoutManager.initiate(blueData, 'all')
+        $('#all_nodes').removeClass("active")
+        $('#webcast_nodes').removeClass("active")
+        $('#webcast_inside').addClass("active")
+      )
     )
-
-

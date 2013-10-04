@@ -15,16 +15,29 @@ define ['views/all_nodes'], layoutManager = (vm) ->
     node.attr("cx", (d) -> return d.x )
       .attr("cy", (d) -> return d.y )
 
-  #may the force be with you
-  layout.initiate = (data) ->
+  layout.initiate = (data, type) ->
     force = d3.layout.force()
-      .charge(-400)
-      .linkDistance(20)
-      .gravity(1.3)
-      .nodes(data.nodes)
-      .links(data.links)
-      .size([forceWidth, forceHeight])
-      .on("tick", tick)
+    if type == 'all'
+      force.charge(-400)
+        .linkDistance(20)
+        .gravity(1.3)
+        .nodes(data.nodes)
+        .links(data.links)
+        .size([forceWidth, forceHeight])
+        .on("tick", tick)
+    if type == 'cluster'
+      force.charge(-200)
+        .linkDistance(300)
+        .gravity(1.2)
+        .nodes(data.nodes)
+        .links(data.links)
+        .size([forceWidth, forceHeight])
+        .on("tick", tick)
     force.start()
+
+  layout.restart = (data, type) ->
+    if force
+      force.stop
+    layout.initiate(data, type)
 
   return layoutManager: layout

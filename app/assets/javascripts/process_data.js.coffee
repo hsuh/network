@@ -1,7 +1,8 @@
-define processData = () ->
+define ['data/get_clusters'], processData = (clusterData) ->
   data     = null
   exports  = {}
   dispatch = d3.dispatch('dataReady')
+  clusters = clusterData.clusters
 
   getNodesForLinkSourceAndTarget = (data, link_obj) ->
     if data == null then return
@@ -35,11 +36,21 @@ define processData = () ->
     trimNodes()
     dispatch.dataReady()
 
+  exports.getNodesOfGroup = () ->
+
   exports.debugData = () ->
     console.log('clean data', data)
 
+  exports.getClusters = () ->
+    clusterData = clusters.getData(data, "all")
+    return clusterData
+
   exports.getData = () ->
     return data
+
+  exports.getBlueData = () ->
+    blueData = clusters.getGroupedData(data)
+    return blueData
 
   exports.loadData = () ->
     d3.json('data/cpd_users.json', cleanData)

@@ -1,5 +1,6 @@
-define behaviourManager = () ->
+define ['views/all_clusters'], behaviourManager = (ac) ->
   exports     = {}
+  clusterData = ac.allClusters
 
   nodeChangeSize = (d, opt) ->
     if opt == 'zoom' then return 5 * 2
