@@ -53,7 +53,7 @@ define ['data/get_clusters'], processData = (clusterData) ->
     return blueData
 
   exports.loadData = () ->
-    d4.json('data/cpd_users.json', cleanData)
+    d3.json('data/cpd_users.json', cleanData)
     #d3.json('http://localhost:8080/feusd-insight/clusters/webcasts.json', cleanData)
 
   d3.rebind(exports, dispatch, 'on')
