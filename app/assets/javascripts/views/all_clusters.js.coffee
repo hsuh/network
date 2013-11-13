@@ -11,11 +11,14 @@ define allClusters = () ->
     return node
 
   calculateNodeSize = (d) ->
-    if average_gSize > 100
+    if average_gSize > 70
       return (if d.size then parseInt(d.size/10) else  4)
     else
       console.log('d.size', d.size)
       return (if d.size then d.size + 3 else 4)
+
+  calculateLinkSize = (d) ->
+    return (if d.size then parseInt(d.size/100) else 1)
 
   getColour = (d) ->
     return colour(d.group)
@@ -54,7 +57,7 @@ define allClusters = () ->
       .attr("y1", (d) -> return d.source.y)
       .attr("x2", (d) -> return d.target.x)
       .attr("y2", (d) -> return d.target.y)
-      .style("stroke-width", (d) -> return d.size || 1)
+      .style("stroke-width", calculateLinkSize)
 
   d3.rebind(allClusters, dispatch, 'on')
   return allClusters: allClusters

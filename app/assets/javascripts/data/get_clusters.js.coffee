@@ -7,6 +7,7 @@ define getClusters = () ->
   gc     = {} #previous group centroids
   nodes  = [] #output nodes
   links  = [] #output links
+  total_size = 0
   data   = null
   avg    = null
 
@@ -15,7 +16,10 @@ define getClusters = () ->
       return n.group
 
   averageGroupSize = (data) ->
-    return parseInt(data.nodes.length / data.clusters.length)
+    if data.clusters
+      return parseInt(data.nodes.length / data.clusters.length)
+    else
+      return parseInt(data.nodes.length / 6)
 
   clusters.getGroupedData = (data) ->
     blueNodes = []
@@ -61,6 +65,7 @@ define getClusters = () ->
     for i of gm
       gm[i].link_count = 0
 
+    #determine links
     for k in [0..data.links.length-1]
       e = data.links[k]
       u = getGroup(e.source)
@@ -78,7 +83,12 @@ define getClusters = () ->
 
     for i of lm
       links.push(lm[i])
+      total_size = total_size + i.size
 
-    return {"clusters": data.clusters, "nodes": nodes, "links": links, "averageGroupSize": avg}
+    console.log('length', length)
+    console.log('total_size', total_size)
+    avg_Link_Size = total_size / links.length
+
+    return {"clusters": data.clusters, "nodes": nodes, "links": links, "averageGroupSize": avg, "averageLinkGroupSize": avg_Link_Size}
 
   return clusters: clusters

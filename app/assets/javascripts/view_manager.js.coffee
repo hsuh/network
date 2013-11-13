@@ -20,13 +20,11 @@ define ['views/all_nodes', 'views/all_clusters'], viewManager = (nodes, ac) ->
     svg.attr('opacity', 1e-6).transition().duration(1000).attr('opacity', 1)
 
   elems.attachDataToElems = (data, scope) ->
+    links_group = d3.select('g.links')
+    nodes_group = d3.select('g.nodes')
     if scope == 'all'
-      links_group = d3.select('g.links')
-      nodes_group = d3.select('g.nodes')
       allNodes.attachData(nodes_group, links_group, data)
     if scope == 'webcasts'
-      links_group = d3.select('g.links')
-      nodes_group = d3.select('g.nodes')
       clusters.attachData(nodes_group, links_group, data)
 
   return viewManager: elems

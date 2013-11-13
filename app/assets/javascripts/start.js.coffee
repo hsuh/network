@@ -1,4 +1,4 @@
-define ['process_data', 'view_manager', 'layout_manager', 'behaviour_manager', 'layouts/fd_for_clusters', 'views/all_nodes'], start = (pd, vm, lm,bm, fdc, all_nodes) ->
+define ['data_manager', 'view_manager', 'layout_manager', 'behaviour_manager', 'layouts/fd_for_clusters', 'views/all_nodes'], start = (pd, vm, lm,bm, fdc, all_nodes) ->
   return start: () ->
     dataManager      = pd.dataManager
     viewManager      = vm.viewManager

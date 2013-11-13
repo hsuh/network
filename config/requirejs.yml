@@ -1,3 +1,4 @@
 paths:
   jquery: 'jquery'
   jquery_ujs: 'jquery_ujs'
+  d3: 'd3'

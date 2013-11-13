@@ -19,7 +19,7 @@ define ['views/all_nodes'], layoutManager = (vm) ->
     force = d3.layout.force()
     if type == 'all'
       force.charge(-400)
-        .linkDistance(20)
+        .linkDistance(100) #20
         .gravity(1.3)
         .nodes(data.nodes)
         .links(data.links)
