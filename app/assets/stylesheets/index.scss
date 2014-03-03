@@ -1,7 +1,7 @@
 @import 'bootstrap';
 .link {
-  stroke: #0A0A0A;
-  stroke-opacity: 0.5;
+  stroke: #D3D3D3; //#0A0A0A;
+  stroke-opacity: 1;
 }
 
 circle.leaf {
@@ -12,4 +12,8 @@ circle.leaf {
 circle.group {
   stroke: #555;
   stroke-width: 2px;
+}
+
+.viz {
+  border: 1px solid #ccc;
 }

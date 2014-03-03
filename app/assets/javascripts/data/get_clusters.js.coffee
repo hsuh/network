@@ -85,8 +85,6 @@ define getClusters = () ->
       links.push(lm[i])
       total_size = total_size + i.size
 
-    console.log('length', length)
-    console.log('total_size', total_size)
     avg_Link_Size = total_size / links.length
 
     return {"clusters": data.clusters, "nodes": nodes, "links": links, "averageGroupSize": avg, "averageLinkGroupSize": avg_Link_Size}

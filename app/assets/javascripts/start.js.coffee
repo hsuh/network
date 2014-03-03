@@ -8,15 +8,13 @@ define ['data_manager', 'view_manager', 'layout_manager', 'behaviour_manager', '
     console.log(behaviourManager)
 
     viewManager.appendElems()
-    dataManager.loadData()
 
+    dataManager.loadData()
     dataManager.on('dataReady', () ->
       dataManager.debugData()
       data        = dataManager.getData()
       clusterData = dataManager.getClusters()
       blueData    = dataManager.getBlueData()
-      console.log('clusterData', clusterData)
-      console.log('blueData', blueData)
       viewManager.attachDataToElems(data, 'all')
       layoutManager = lm.layoutManager
       layoutManager.initiate(data, 'all')

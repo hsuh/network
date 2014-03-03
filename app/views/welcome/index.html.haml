@@ -1,3 +1,4 @@
+%strong=@gemtest
 %div.container
   %div.navbar
     %div.navbar-inner
@@ -8,6 +9,11 @@
         %li{class: 'switch', id: 'webcast_inside'}= link_to 'Blue Cluster', '#'
         /%li.dropdown
         /= link_to "Dropdown", '#', class: 'dropdown-toggle', style: {:'data-toggle' =>'dropdown'}
-%div.container
+%div.container.viz
   %div#viz
 %div#legend
+%div.container
+  %div.container
+    %div#graph1
+  %div.container
+    %div#graph2

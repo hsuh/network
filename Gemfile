@@ -12,6 +12,7 @@ gem 'haml'
 gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'd3-rails'
+gem 'holahsu'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

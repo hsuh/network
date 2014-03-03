@@ -14,9 +14,13 @@ define ['data/get_clusters'], processData = (clusterData) ->
 
   prepareData = () ->
     if data == null then return
+    # get source and data javascript objects for links
+    # in D3 code part of force.start does the same thing.
+    # but takes node array id instead of node.user_id
     $.each data.links, (k,link_obj) ->
       getNodesForLinkSourceAndTarget(data, link_obj)
 
+    # count the number of links for nodes
     $.each data.nodes, (k, node_obj) ->
       node_obj.leaf_link_count = 0
       $.each data.links, (k, link) ->
@@ -24,6 +28,7 @@ define ['data/get_clusters'], processData = (clusterData) ->
           node_obj.leaf_link_count += 1
     return data
 
+  # trim the nodes that don't have any links
   trimNodes = () ->
     data_len = data.nodes.length - 1
     $.each data.nodes, (k, node_obj) ->
@@ -53,8 +58,8 @@ define ['data/get_clusters'], processData = (clusterData) ->
     return blueData
 
   exports.loadData = () ->
-    d3.json('data/cpd_users.json', cleanData)
-    #d3.json('http://localhost:8080/feusd-insight/clusters/webcasts.json', cleanData)
+    #d3.json('data/cpd_users.json', cleanData)
+    d3.json('http://localhost:8080/feusd-insight/clusters/webcasts.json', cleanData)
 
   d3.rebind(exports, dispatch, 'on')
   return {
